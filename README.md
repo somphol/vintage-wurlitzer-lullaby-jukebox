@@ -110,7 +110,7 @@ manifest of CORS-enabled, public-domain archive recordings.
 - **Accessibility** — semantic buttons, ARIA slider knobs, visible focus rings, skip link, reduced
   motion, keyboard operation and a screen-reader live status.
 - **Diagnostics** — open `?selftest` for 27 in-page checks rendered as a pass/fail list.
-- **First-listen playlist** — on first open the jukebox loads a queue of real archive performances;
+- **First-listen playlist** — on first open the jukebox loads all 32 real archive performances;
   browsers require a gesture, so a gold “Start the first-listen playlist” prompt appears.
 
 ---

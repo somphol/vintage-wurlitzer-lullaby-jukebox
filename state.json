@@ -32,10 +32,10 @@
       "script.js"
     ],
     "lineCounts": {
-      "index.html": 413,
-      "style.css": 1798,
+      "index.html": 414,
+      "style.css": 1814,
       "script.js": 3846,
-      "total": 6057
+      "total": 6074
     },
     "supportingFiles": [
       ".editorconfig",
@@ -94,7 +94,7 @@
       "tests/static.test.mjs"
     ],
     "counts": {
-      "sourceLines": 6057,
+      "sourceLines": 6074,
       "trackedFiles": 55,
       "docs": 15,
       "tests": 5,
@@ -144,11 +144,11 @@
     "name": "wurlitzer-lullaby-studio",
     "title": "Wurlitzer Lullaby Studio",
     "status": "published",
-    "version": "9b86ab736202",
+    "version": "48524eb587b4",
     "catalog": "https://somphol.github.io/opencode-skills/",
     "source": "https://github.com/somphol/opencode-skills/tree/main/wurlitzer-lullaby-studio",
     "local": "~/.config/opencode/skills/wurlitzer-lullaby-studio",
     "validated": true,
-    "note": "50 files, 0.95 MB. check-skill.mjs passes; a clean scaffold passed 23/23 engine+repository and 27/27 headless browser checks. Catalog index serves version 9b86ab736202."
+    "note": "50 files, 0.95 MB. check-skill.mjs passes; a clean scaffold passed 23/23 engine+repository and 27/27 headless browser checks. Catalog index serves version 48524eb587b4."
   }
 }

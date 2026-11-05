@@ -133,7 +133,7 @@ try {
       queue: window.__wurlitzer.queueTracks().length
     }))()`);
     assert.equal(prompt.visible, true);
-    assert.equal(prompt.queue, 8);
+    assert.equal(prompt.queue, 32);
     await click('#start-playlist', true);
     await sleep(1000);
     const info = await evaluate(`(() => ({
@@ -145,13 +145,15 @@ try {
       source: document.getElementById('overlay-source').href,
       queue: document.getElementById('overlay-queue').textContent
     }))()`);
-    assert.equal(info.current, 'archive-h1');
-    assert.equal(info.slot, 'H-1');
+    assert.equal(info.current, 'archive-h3');
+    assert.equal(info.slot, 'H-3');
     assert.ok(['loading', 'playing'].includes(info.status));
     assert.equal(info.overlay, true);
     assert.match(info.title, /Berceuse/);
     assert.match(info.source, /^https:\/\/commons\.wikimedia\.org\//);
-    assert.match(info.queue, /1\/8/);
+    assert.match(info.queue, /1\/32/);
+    await sleep(9500);
+    assert.equal(await evaluate('document.getElementById("now-overlay").classList.contains("is-visible")'), true);
     return true;
   });
 
