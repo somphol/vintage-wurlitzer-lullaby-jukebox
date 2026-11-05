@@ -252,7 +252,9 @@ Details: [ACCESSIBILITY](docs/ACCESSIBILITY.md) · [PERFORMANCE](docs/PERFORMANC
 
 ## Credits
 
-Built in a single **OpenCode** session with **DeepSeek V4.1 Flash** (`opencode-go/deepseek-v4.1-flash`).
+Built in a single **OpenCode** session with **DeepSeek V4.1 Flash**
+(`opencode-go/deepseek-v4.1-flash`): **27m 34s** and **14.1M tokens** (cache reads dominate) at the
+time of capture. Exact counters, file inventory and verification live in [state.json](state.json).
 Three.js 0.169.0 (MIT). The eight melodies are public domain; the four archive recordings are
 public-domain or freely licensed and individually credited in
 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). The build-session record, including elapsed time
