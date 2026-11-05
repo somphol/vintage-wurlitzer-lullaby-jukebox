@@ -5,10 +5,10 @@
     "id": "ses_e56042271ffePs43L8FfL1gi0s",
     "title": "Vintage Wurlitzer Jukebox Project",
     "startedAt": "2026-11-05T04:33:38Z",
-    "capturedAt": "2026-11-05T05:01:37Z",
-    "elapsedSeconds": 1679,
-    "elapsed": "27m 59s",
-    "note": "One continuous OpenCode session: concept, 3D cabinet, dual audio engines, bilingual UI, four test layers, documentation, GitHub Pages release and the reusable skill. Captured from the OpenCode session database before the final release-state push."
+    "capturedAt": "2026-11-05T05:03:37Z",
+    "elapsedSeconds": 1799,
+    "elapsed": "29m 59s",
+    "note": "One continuous OpenCode session: concept, 3D cabinet, dual audio engines, bilingual UI, four test layers, documentation, GitHub Pages release and the reusable skill. Captured from the OpenCode session database immediately before the final metadata push; only that push and its Pages verification fall outside the counters."
   },
   "model": {
     "name": "DeepSeek V4.1 Flash",
@@ -16,14 +16,14 @@
     "provider": "opencode-go"
   },
   "usage": {
-    "inputTokens": 229149,
-    "outputTokens": 132445,
-    "reasoningTokens": 60086,
-    "cacheReadTokens": 14182912,
+    "inputTokens": 236003,
+    "outputTokens": 135341,
+    "reasoningTokens": 62105,
+    "cacheReadTokens": 15888256,
     "cacheWriteTokens": 1547,
-    "totalTokens": 14606139,
+    "totalTokens": 16323252,
     "costUSD": 0.0,
-    "note": "Read from the OpenCode session database (session_v2) for this session. totalTokens sums all five counters; repeated prompt context (cache reads) dominates. costUSD is 0 on the flat-rate plan. Counters exclude the final release-state push and skill re-sync."
+    "note": "Read from the OpenCode session database (session_v2) for this session. totalTokens sums all five counters; repeated prompt context (cache reads) dominates. costUSD is 0 on the flat-rate plan. Counters exclude the final metadata push only."
   },
   "artifacts": {
     "sourceFiles": [
@@ -123,7 +123,7 @@
     "branch": "main",
     "path": "/",
     "status": "live",
-    "verifiedAt": "2026-11-05T05:01:37Z",
+    "verifiedAt": "2026-11-05T05:03:37Z",
     "note": "Pages created through the API on main / root. The 22-check browser suite passed against the live URL with zero console errors; the in-page suite is 23/23."
   },
   "credits": {
