@@ -43,6 +43,27 @@ The stage caption is a floating brass pill, not another card.
 At ≤1000 px the panels become bottom sheets with a two-tab switcher; the cabinet stays fully visible.
 At ≤560 px the top bar loses the subtitle and the free-play text, keeping only the chip dot.
 
+## Collection pages, themes and type size
+
+The rack is a 64-slot surface split into eight category pages (A–H). A 3×3 tab grid keeps every
+category visible on a 330 px panel: All, Lullabies, Music Box, Classical, Folk & World, Dreams I,
+Dreams II, Bonus, 78s. The paper grid shows eight strips per page, matching the 3D rack; All shows
+all 64 slots and search spans every collection.
+
+Four themes recolor the whole product without changing the geometry:
+
+| Theme | Character | Accent |
+| --- | --- | --- |
+| Midnight | default navy-and-gold | amber bulbs, rose/teal rim lights |
+| Amber Lounge | warm walnut and amber | honey bulbs, amber points |
+| Emerald Club | deep green and brass | champagne bulbs, green points |
+| Rose Salon | burgundy and rose gold | peach bulbs, rose points |
+
+`setTheme()` writes `body.dataset.theme` for CSS variables and calls `scene.setTheme()` to recolor the
+background, fog, marquee bulbs and point lights. Text size is a targeted `body[data-font]` type scale
+with three steps (A / A+ / A++); it deliberately avoids browser zoom so the fixed stage and canvas
+stay aligned. Both preferences persist.
+
 ## The cabinet
 
 - **Silhouette:** box body + extruded arch (radius 1.7, bevel 0.055) + chrome outer tube + brass inner

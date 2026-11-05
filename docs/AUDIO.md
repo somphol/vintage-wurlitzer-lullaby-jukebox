@@ -6,7 +6,7 @@ The jukebox can play two kinds of record:
 
 1. **Synth (A-1…B-4).** A Web Audio step sequencer turns a note array into a music-box performance.
    Zero bandwidth, instant, loops forever.
-2. **Archive (C-1…C-4).** A validated JSON manifest points at CORS-enabled MP3s. A single reusable
+2. **Archive (H-1…H-4).** A validated JSON manifest points at CORS-enabled MP3s. A single reusable
    `<audio>` element is routed through `MediaElementAudioSourceNode` into the same master chain, so
    EQ, volume and the sleep timer apply equally.
 
@@ -38,7 +38,7 @@ G4:2 G4:1 B4:3 ...
 `(octave + 1) * 12 + pitchClass`, so `C4 = 60`, `A4 = 69`, and `midiToFreq` is the standard
 `440 * 2^((m-69)/12)`.
 
-### The eight arrangements
+### The first page and the full catalogue
 
 | Slot | Melody | Tempo | Duration |
 | --- | --- | --- | --- |
@@ -46,13 +46,16 @@ G4:2 G4:1 B4:3 ...
 | A-2 | *Twinkle, Twinkle, Little Star* | 72 | 0:40 |
 | A-3 | *Schlafe, mein Prinzchen* (attr. Flies/Mozart) | 64 | 1:05 |
 | A-4 | Schubert's *Wiegenlied* | 60 | 0:54 |
-| B-1 | *Rock-a-bye Baby* | 58 | 0:50 |
-| B-2 | *Hush, Little Baby* | 68 | 0:39 |
-| B-3 | *Frère Jacques* (sleep variant) | 54 | 1:11 |
-| B-4 | *Golden Slumbers* | 62 | 0:50 |
+| A-5 | *Rock-a-bye Baby* | 58 | 0:50 |
+| A-6 | *Hush, Little Baby* | 68 | 0:39 |
+| A-7 | *Frère Jacques* (sleep variant) | 54 | 1:11 |
+| A-8 | *Golden Slumbers* | 62 | 0:50 |
 
 These are simplified, mood-first settings of public-domain melodies, not transcriptions. Change tempo
-and the duration recalculates at load.
+and the duration recalculates at load. The full fifty-track catalogue is in [TRACKS](TRACKS.md). The A page is shown here:
+a further 42 arrangements cover Music Box, Classical, Folk & World, original Dreams and Bonus pages.
+Every synth track is either a public-domain melody or an original composition; every archive track is
+public domain.
 
 ## Ambient generators
 

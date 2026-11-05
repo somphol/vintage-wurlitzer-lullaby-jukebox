@@ -34,6 +34,14 @@ suppressed. The help dialog moves focus to its close button; `Esc` closes it.
 - The 3D canvas is `aria-hidden`; interactive 3D strips and keys are shortcuts, never the only route.
 - The self-test overlay is a modal dialog with a heading and a list of pass/fail items.
 
+## Text size and themes
+
+The studio panel exposes three text sizes (A / A+ / A++, persisted) and four themes. The type scale
+increases the important reading surfaces — strips, now-playing, captions, labels, buttons and status
+— without scaling the WebGL canvas or breaking fixed positioning. Themes keep the same contrast
+relationships: cream on near-black, gold accents, dark sepia on cream paper. Theme names are exposed
+as `aria-label`/`title` on the swatches, and text-size buttons have descriptive labels.
+
 ## Visual
 
 - Primary text (`#f2e7d3`) on `#05070d` is well above 7:1. Muted text (`#9b968d`) is ~5:1.

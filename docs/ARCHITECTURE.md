@@ -9,10 +9,10 @@ Browser
 ├── script.js             one ES module, six ordered sections
 │   ├── I18N              EN/TH dictionaries (marker-delimited)
 │   ├── ENGINE            pure maths, slots, settings, manifest (marker-delimited)
-│   ├── TRACKS            eight note arrays, parsed at load
+│   ├── TRACKS            fifty note arrays in eight collections, parsed at load
 │   ├── JukeboxAudio      graph + scheduler + stream + ambient + timer
 │   ├── WurlitzerScene    renderer + geometry + textures + raycasting
-│   └── WurlitzerApp      bindings, persistence, languages, coins, self-test
+│   └── WurlitzerApp      bindings, persistence, languages, coins, themes, self-test
 └── data/playlist.json    validated archive manifest
 ```
 
@@ -29,7 +29,7 @@ the import map in `index.html` at one pinned version (`0.169.0`).
 4. `WurlitzerScene` creates the renderer, PMREM environment, composer, cabinet, textures and the
    animation loop.
 5. UI bindings attach. Language and persisted settings are applied.
-6. `boot()` fetches `data/playlist.json` with a 4.2 s abort, merge the validated C tracks, refreshes
+6. `boot()` fetches `data/playlist.json` with a 4.2 s abort, merges the validated H tracks, refreshes
    the DOM and 3D racks, then removes the loading screen and sets `body.dataset.ready`.
 7. If the URL has `?selftest`, the in-page suite runs after 500 ms.
 
@@ -51,8 +51,8 @@ scene
     ├── inner arch glass (transparent, depthWrite false)
     ├── bubble tube ×2: glass TubeGeometry + emissive core + 22 bubbles each
     ├── record deck: platter, mat, vinyl, groove rings, label, spindle, tone arm
-    ├── title rack: backing, chrome rails, 8 paper planes (A-1…B-4)
-    ├── keypad: 12 chrome keys with canvas labels + brass rims
+    ├── title rack: backing, chrome rails, 8 paper planes (active collection page)
+    ├── keypad: 16 chrome keys (A–H, 1–8) with canvas labels + brass rims
     ├── coin slot: brass plate, slit, ring, label + animated quarter
     ├── speaker grille texture + chrome frame
     ├── marquee sign texture
@@ -86,29 +86,42 @@ ambient layers ──→ ambientBus ┘
 
 See [AUDIO](AUDIO.md) for scheduling details.
 
-## Data flow: selecting a record
+## Collections, slots and search
 
 ```
 DOM strip / 3D strip / keypad
   → WurlitzerApp.selectSlot(slot)
-  → trackBySlot lookup (A/B synth, C archive)
+  → trackBySlot lookup (A–G synth, H archive)
   → credit gate if Free Play is off
   → current + lastTrack + save()
   → JukeboxAudio.play(track)
       synth: stop sources, start look-ahead scheduler
       stream: set <audio> src, play(), hook errors
   → scene.setPlaying(true), flashStrip(), tone arm, record spin, bubbles speed up
-  → renderRack(), syncNowPlaying(), status, toast
+  → renderRack()/refreshSceneRack(), syncNowPlaying(), status, toast
 ```
+
+The rack is a 64-slot surface (A-1…H-8) split into eight collection pages. `getRackRows()` applies the
+active collection, the title/artist search, and the favourites filter; the 3D rack always shows the
+first eight rows of the active page. Choosing a record from another collection switches the page.
+The planner uses `scene.refreshRack(entries, lang)` with exactly eight `{slot, track}` rows.
 
 An empty slot never reaches audio: it clacks, sets a warning status and shows “No record in that
 slot.”
+
+## Display preferences
+
+`settings.theme` is one of `midnight`, `amber`, `emerald`, `rose`. `setTheme()` writes
+`body.dataset.theme`, updates the CSS variables, and calls `scene.setTheme()` to recolor the scene
+background, fog, bulbs and two point lights. `settings.fontSize` is `normal`, `large` or `xlarge`;
+`setFontSize()` writes `body.dataset.font`, which drives a targeted CSS type scale (not a global
+browser zoom, which would break the fixed stage). Both persist through `normalizeSettings`.
 
 ## Persistence
 
 One key: `wurlitzer-lullaby-studio:v1`. The stored object is the normalised settings schema
 (`version`, `lang`, `freePlay`, `credits`, `master`, `bass`, `treble`, `mix`, `ambient.*`, `timer`,
-`lastTrack`, `favorites`, `muted`). `normalizeSettings` clamps numbers, rejects unknown languages,
+`lastTrack`, `favorites`, `muted`, `theme`, `fontSize`). `normalizeSettings` clamps numbers, rejects unknown languages,
 deduplicates favourites and caps credit/variant ranges. Export wraps the same object in a versioned
 payload with an ISO timestamp and a track list.
 
@@ -121,10 +134,10 @@ lose coverage — keep pure logic inside and DOM/Three code outside.
 
 ## Extension points
 
-- **New synth lullaby:** add an object to `BUILTIN_TRACKS`, assign an unused A/B slot, add EN/TH
+- **New synth lullaby:** add a `T(...)` row to `BUILTIN_TRACKS`, assign an unused A–G slot, add EN/TH
   title and artist, write a `notes` string in `NameOctave:beats` tokens, run the engine tests.
-- **New archive stream:** add a validated entry to `data/playlist.json` in C-1…D-4 with an https URL
-  and licence/source, then run the manifest test.
+- **New archive stream:** add a validated entry to `data/playlist.json` in C-1…H-8 with an https URL,
+  `license: "Public domain"` and a source URL, then run the manifest test.
 - **New ambient bed:** create a noise layer in `buildAmbient`, add a slider/toggle in `index.html`,
   route through `ambientBus`, persist it in `normalizeSettings`.
 - **New visual:** build inside `buildCabinet`/`buildRecordDeck`; push interactive meshes into

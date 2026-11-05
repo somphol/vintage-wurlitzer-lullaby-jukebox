@@ -18,7 +18,8 @@
 
 ## Music and recordings
 
-The eight procedural arrangements are original settings of public-domain melodies:
+The 50 procedural arrangements are original settings of public-domain melodies, plus 18 original
+compositions. The public-domain sources include (the full 50-track catalogue is in [TRACKS](TRACKS.md)):
 
 - Johannes Brahms, *Wiegenlied* (1868)
 - *Twinkle, Twinkle, Little Star* (Jane Taylor, 1806)
@@ -29,13 +30,13 @@ The eight procedural arrangements are original settings of public-domain melodie
 - *Frère Jacques* (traditional French)
 - *Golden Slumbers* (traditional English)
 
-The four archive streams are **linked, not redistributed**. Each remains under the licence on its
+The four archive streams are **linked, not redistributed**. Each is marked **Public domain** on its
 Wikimedia Commons page:
 
 - Brahms – Schumann-Heink, *Wiegenlied* (1915)
-- *Guten Abend, gut' Nacht*
-- *Schlafe, mein Prinzchen* (Ukrainian)
 - *Lullaby Wound-Up Clock*
+- Gabriel Fauré, *Berceuse* Op. 56 No. 1
+- Christian Cappelen, *Berceuse*
 
 Full URLs and licence notes: [THIRD_PARTY_NOTICES](../THIRD_PARTY_NOTICES.md).
 

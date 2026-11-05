@@ -3,6 +3,7 @@
 | Document | Read it when |
 | --- | --- |
 | [ARCHITECTURE](ARCHITECTURE.md) | You need the internal map: modules, scene graph, audio graph, data flow. |
+| [TRACKS](TRACKS.md) | You need the slot-by-slot catalogue and licensing note. |
 | [REPRODUCTION](REPRODUCTION.md) | You are rebuilding this from zero or handing it to another agent. |
 | [AUDIO](AUDIO.md) | You are changing lullabies, the sequencer, ambient beds or the timer. |
 | [DESIGN](DESIGN.md) | You are changing the palette, type, layout or 3D materials. |

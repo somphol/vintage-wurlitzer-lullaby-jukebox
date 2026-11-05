@@ -2,7 +2,7 @@
 
 Four layers, no test framework dependency, no npm install.
 
-## 1. Engine — 10 checks
+## 1. Engine — 11 checks
 
 ```bash
 node --test tests/engine.test.mjs
@@ -10,9 +10,9 @@ node --test tests/engine.test.mjs
 
 `tests/lib/fixtures.mjs` slices the `/* ENGINE:START */ … /* ENGINE:END */` block and the
 `/* TRACKS:START */ … /* TRACKS:END */` block out of `script.js`, then runs them with `new Function`.
-Covered: note maths, sequence parsing, all eight lullabies (length, slot, bilingual metadata),
+Covered: note maths, sequence parsing, all fifty lullabies (length, slot, bilingual metadata),
 smoothstep endpoints/monotonicity, clock formatting, slot/rack agreement, manifest validation,
-settings normalisation, wrap-around stepping, export schema.
+settings normalisation (including theme/text size), wrap-around stepping, export schema.
 
 ## 2. Repository — 12 checks
 
@@ -25,7 +25,7 @@ literal `$('…')` reference, EN/TH symmetry and static-key coverage, engine pur
 THREE/fetch/Date), manifest validity and Wikimedia provenance, the documentation set and README links,
 `state.json` fields, secret/home-path/IP patterns, and CSS tokens/breakpoints.
 
-## 3. In-page — 23 checks
+## 3. In-page — 25 checks
 
 Open <http://localhost:8000/?selftest>. The overlay lists every check and sets
 `body.dataset.selftest` to `passed/total`. It is also callable:
@@ -34,12 +34,12 @@ Open <http://localhost:8000/?selftest>. The overlay lists every check and sets
 await window.__wurlitzer.runSelfTest(true)
 ```
 
-Covers WebGL, cabinet assembly, 44 bubbles, 30 bulbs, record/tone arm, eight tracks, sequence
-validity, unique slots, dictionary symmetry, 16 strips, 12 keys, manifest response, C-slot mapping,
+Covers WebGL, cabinet assembly, 44 bubbles, 30 bulbs, record/tone arm, fifty tracks, sequence
+validity, unique slots, dictionary symmetry, 8-page tabs, 64 slots, 16 keys, manifest response, H-slot mapping,
 fade curve, clock, normalisation, audio graph, synth start/pause, timer fade, empty-slot rejection,
-export payload, language switch, scene energy/dim.
+export payload, language switch, scene energy/dim, theme switch, text-size switch.
 
-## 4. Headless browser — 22 checks
+## 4. Headless browser — 25 checks
 
 ```bash
 node tests/browser.test.mjs
@@ -63,13 +63,16 @@ read.
 The suite drives the page over the DevTools Protocol (`Runtime.evaluate`, `Page.captureScreenshot`,
 `Emulation.setDeviceMetricsOverride`, `Emulation.setEmulatedMedia`) and asserts:
 
-- boot: ready, WebGL, canvas, cabinet children, 16 strips, 12 keys, manifest
-- self-test 23/23 and dataset
+- boot: ready, WebGL, canvas, cabinet children, 8 active strips, 16 keys, manifest
+- self-test 25/25 and dataset
 - selecting A-2, now-playing/caption/status
 - pause/resume, next/previous
 - coin mode consumes a credit; free-play bypass
 - empty D-8 rejection; keypad A-3 selection
 - Thai switch updates `<html lang>`, rack, title; back to EN
+- category tabs switch pages and rebuild the 3D rack
+- title search finds a record in another collection
+- theme switch reaches the scene; A++ text size updates the document
 - favourite star + filter
 - master knob keyboard change + aria value
 - ambient rain slider and toggle
@@ -85,11 +88,11 @@ The suite drives the page over the DevTools Protocol (`Runtime.evaluate`, `Page.
 
 | Layer | Checks |
 | --- | --- |
-| Engine | 10 |
+| Engine | 11 |
 | Repository | 12 |
-| In-page | 23 |
-| Browser | 22 |
-| **Total** | **67** |
+| In-page | 25 |
+| Browser | 25 |
+| **Total** | **73** |
 
 ## Troubleshooting
 
@@ -97,7 +100,7 @@ The suite drives the page over the DevTools Protocol (`Runtime.evaluate`, `Page.
 | --- | --- |
 | `Chrome not found` | `CHROME="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" node tests/browser.test.mjs` |
 | WebGL context fails | keep `--enable-unsafe-swiftshader`; try a non-headless Chrome |
-| Manifest check fails | network blocked; Wikimedia is required for C-1…C-4 |
+| Manifest check fails | network blocked; Wikimedia is required for H-1…H-4 |
 | CDN import fails | jsDelivr blocked; the app and browser suite need it |
 | Timer assertion fails | check `fadeGain` still returns exactly 0.5 at 60 s |
 | Keychain prompts | do not remove the mock-keychain flags |

@@ -5,9 +5,10 @@ Browsers require a click before audio. Press the gold play button or a title str
 icon, the master knob, and the system volume. If `?selftest` passes the audio-graph check but you hear
 nothing, try a different browser; some Safari versions suspend media-element sources.
 
-**Why do C-1…C-4 not play?**
+**Why do H-1…H-4 not play?**
 They stream from Wikimedia Commons. The host must be reachable and must allow CORS; the shipped URLs
-do. If it fails, the app shows an error and synth tracks still work.
+do. If it fails, the app shows an error and synth tracks still work. All four archive recordings are
+public domain.
 
 **Can it run offline?**
 After the Three.js modules are cached, the synth engine, ambient beds, timer and UI work offline. The
@@ -18,15 +19,15 @@ It is a procedural tribute built from geometry and canvas textures, not a licens
 silhouette, bubble tubes, chrome and paper rack are evocations.
 
 **Why are only eight records in the 3D rack?**
-The physical rack is a curated eight-record display. The DOM rack lists all 16 slots, including the
-four archive streams and four empty D slots.
+The physical rack is a curated eight-record page. The DOM rack lists all 64 slots across eight
+category pages; the 3D paper strips mirror the active page or the current record's collection.
 
-**What do the empty D slots do?**
-They reject the selection with a clack and “No record in that slot,” like a real jukebox with an empty
-title strip.
+**What do the empty slots do?**
+G-3…G-8 and H-5…H-8 are reserved. They reject the selection with a clack and “No record in that
+slot,” like a real jukebox with an empty title strip.
 
 **How do I add my own music?**
-Edit `data/playlist.json` with a C-1…D-4 slot, an https URL that allows CORS, title, artist, duration,
+Edit `data/playlist.json` with a C-1…H-8 slot, an https URL that allows CORS, title, artist, duration,
 licence, credit and source. Run the tests. Do not commit the audio itself.
 
 **Can I change the lullabies?**

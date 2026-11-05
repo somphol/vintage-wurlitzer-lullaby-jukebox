@@ -53,16 +53,16 @@ perceptually gentler and the midpoint is exactly 0.5, which is easy to test.
 **Consequence:** the engine test asserts 0.5 at 60 s; changing the curve requires updating docs, tests
 and the self-test.
 
-## ADR-006 — 3D rack shows A/B only
+## ADR-006 — 3D rack shows one eight-record page
 
-**Decision:** the physical paper rack renders the eight synth records (A-1…B-4). The DOM rack renders
-16 slots including archive C and empty D.
+**Decision:** the physical paper rack renders eight records from the active category page or the
+current record's collection. The DOM rack renders all 64 slots with tabs and search.
 
-**Why:** eight canvas textures stay legible at the cabinet's screen size. Sixteen would shrink the
-type below readability and add GPU memory for no interaction benefit.
+**Why:** eight canvas textures stay legible at the cabinet's screen size. Sixty-four would shrink the
+type below readability and add GPU memory. The eight-record page also matches the physical 1015 rack.
 
-**Consequence:** archive streams are selected from the DOM or the C keypad code, not by clicking a 3D
-strip. This is documented in the help copy.
+**Consequence:** the 3D rack is a mirror of the active page, not the whole library. Archive streams
+(H page) and all categories are reachable from the DOM tabs or the A–H keypad.
 
 ## ADR-007 — Engine markers and `new Function` tests
 
@@ -103,3 +103,27 @@ and the export docs.
 silent English leaks.
 
 **Consequence:** a static test compares sorted key arrays; every new UI string needs both languages.
+
+## ADR-011 — 50 tracks in eight collection pages, not one long list
+
+**Decision:** the library is 50 synth records + 4 archive records in 8 collections (A–H), with 64
+slots (A-1…H-8). The DOM shows one category page at a time by default; All shows all 64 slots. The 3D
+rack shows the active page (or the current track's collection).
+
+**Why:** a 50-row list is unreadable on a 330 px panel, and 50 canvas textures in the 3D rack would be
+illegible. Category tabs, search and an eight-record physical page preserve the jukebox metaphor.
+
+**Consequence:** the keypad is A–H + 1–8, not A–D. Adding a track means assigning an unused slot and
+a collection page; `getRackRows()` is the single filter path for tabs, search and favourites.
+
+## ADR-012 — Themes recolor CSS + 3D, text size scales type only
+
+**Decision:** four themes (`midnight`, `amber`, `emerald`, `rose`) set CSS variables and call
+`scene.setTheme()`; text size (`normal`, `large`, `xlarge`) sets `body[data-font]` and targeted type
+overrides.
+
+**Why:** CSS variables alone cannot recolor the WebGL scene, and browser zoom breaks a fixed canvas
+stage. A targeted type scale keeps the layout stable and the canvas aligned.
+
+**Consequence:** new components need both a base size and the three size overrides; new themes need
+CSS tokens plus a scene color set. Both preferences are part of `normalizeSettings` and the export.

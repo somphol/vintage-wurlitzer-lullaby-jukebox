@@ -40,8 +40,8 @@ sheets, reduced-motion block. Important layout rules:
 - `.layout` is a 3-column grid on desktop: rack / open stage / studio.
 - At `max-width: 1000px` the panels become fixed bottom sheets toggled by `#tab-songs`/`#tab-studio`;
   the stage caption hides when a sheet is open.
-- The rack uses `grid-auto-flow: column` with 8 rows and two columns so A-1…B-4 fill the left column
-  and C-1…D-4 the right.
+- The rack is a two-column, row-flow grid. A category page shows eight strips as 4 rows × 2 columns,
+  matching the 3D rack; All shows all 64 slots in the same two-column flow.
 - `.strip` is a 3-column grid: open button spans the first two columns, star sits in the third.
 
 ## 4. I18N and pure engine
@@ -60,16 +60,16 @@ The engine must export (by name, because tests re-import them): `noteToMidi`, `m
 `nextTrackId`, `exportPayload`, `DEFAULT_SETTINGS`. No DOM/window/THREE/fetch/Date.
 
 `fadeGain` must be smoothstep: `x = remaining / 120; x*x*(3-2x)`, returning 1 at ≥120 s and 0 at ≤0.
-`formatClock` is `m:ss`. `buildRack` returns 16 rows A-1…D-4 with `{slot, track|null}`.
+`formatClock` is `m:ss`. `buildRack` returns 64 rows A-1…H-8 with `{slot, track|null}`.
 
 ## 5. Eight lullabies
 
-Each track: `id`, `slot` A-1…B-4, `engine: 'synth'`, `bpm`, `wave` (`triangle`/`sine`), `gain`,
+Each track: `id`, `slot` A-1…G-2, `engine: 'synth'`, `collection`, `bpm`, `wave` (`triangle`/`sine`), `gain`,
 `accent`, EN/TH `title`/`artist`, and `notes`. Note format is `C4:2 D4:1` (name + octave : beats).
 After the array, parse each sequence and compute `duration = sequenceBeats * 60 / bpm`.
 
-Use public-domain melodies and credit them. Shipped tempos produce 39–87 s loops; the sequencer loops
-seamlessly.
+Use public-domain melodies or original compositions. Shipped tempos produce 39–87 s loops; the
+sequencer loops seamlessly. The reference ships 50 tracks across eight collections.
 
 ## 6. Audio engine
 
@@ -95,7 +95,7 @@ seamlessly.
 - two Catmull-Rom bubble-tube curves with glass TubeGeometry, emissive core, 22 spheres each;
 - deck with platter/vinyl/label/spindle + tone arm group;
 - 8 paper strip planes with canvas textures (redraw on language change);
-- 12 key groups with circle caps + canvas labels;
+- 16 key groups (A–H, 1–8) with circle caps + canvas labels;
 - coin plate + animated quarter;
 - sign canvas, grille canvas, 30 bulbs;
 - wall gradient, floor speckle, rug, dust, five lights.
@@ -116,6 +116,12 @@ arrow keys), applies language to `[data-i18n]` and redraws the 3D paper, syncs n
 handles coin/credit/free-play, timer, mute, ambient sliders, export, mobile tabs, help and keyboard
 shortcuts.
 
+Add the category tabs, title search, four theme swatches and three text-size buttons. `getRackRows()`
+is the single filter path for collection/search/favourites; `refreshSceneRack()` feeds exactly eight
+`{slot, track}` rows to the 3D rack. `setTheme()` must call `scene.setTheme()` as well as writing
+`body.dataset.theme`; `setFontSize()` writes `body.dataset.font` and uses targeted CSS overrides, not
+browser zoom.
+
 The self-test must run in-page and return `{total, passed, checks}`; set
 `body.dataset.selftest`. Boot sets `body.dataset.ready = 'true'` only after the manifest attempt and
 the loading-screen minimum.
@@ -126,13 +132,14 @@ the loading-screen minimum.
 
 ```json
 { "version": 1, "tracks": [
-  { "id": "...", "slot": "C-1", "title": "...", "artist": "...",
+  { "id": "...", "slot": "H-1", "title": "...", "artist": "...",
     "url": "https://upload.wikimedia.org/...mp3", "duration": 110,
     "license": "...", "credit": "Wikimedia Commons", "source": "https://commons.wikimedia.org/wiki/File:..." }
 ] }
 ```
 
-Requirements: slot C-1…D-4, unique, https URL, non-empty title. Wikimedia transcode URLs add
+Requirements: slot C-1…H-8, unique, https URL, non-empty title, `license: "Public domain"`.
+Wikimedia transcode URLs add
 `Access-Control-Allow-Origin: *`, which Web Audio needs. Do not use SoundHelix or other hosts without
 checking CORS.
 
@@ -144,12 +151,12 @@ Write:
 - `tests/engine.test.mjs` — 10 checks on the pure block and extracted tracks.
 - `tests/static.test.mjs` — 12 checks on files, HTML, pinning, ids, i18n, engine purity, manifest,
   docs, state, secrets, CSS.
-- `tests/browser.test.mjs` — 22 checks: boot, self-test, selection, transport, coin, empty slot,
+- `tests/browser.test.mjs` — 25 checks: boot, self-test, selection, transport, coin, empty slot,
   keypad, language, favourites, knobs, ambient, timer, persistence, export, help, mobile, reduced
   motion, console errors.
 - `scripts/screenshot.mjs` — desktop/playing/Thai/mobile/OG captures.
 
-Expected first run: engine 10/10, static 12/12, browser 22/22, in-page 23/23, zero console errors.
+Expected first run: engine 11/11, static 12/12, browser 25/25, in-page 25/25, zero console errors.
 If the manifest check fails, confirm Wikimedia is reachable; if WebGL fails, pass
 `--enable-unsafe-swiftshader` (already in the harness).
 
