@@ -28,8 +28,8 @@ test('HTML shell is complete and product-specific', () => {
   assert.match(html, /<meta name="theme-color" content="#05070d">/);
   assert.match(html, /<title>Vintage Wurlitzer 3D Lullaby Jukebox &amp; Sleep Studio<\/title>/);
   assert.match(html, /<meta property="og:image" content="assets\/og-card\.png">/);
-  assert.match(html, /<script type="module" src="script\.js"><\/script>/);
-  assert.match(html, /<link rel="stylesheet" href="style\.css">/);
+  assert.match(html, /<script type="module" src="script\.js(?:\?[^"]*)?"><\/script>/);
+  assert.match(html, /<link rel="stylesheet" href="style\.css(?:\?[^"]*)?">/);
   assert.match(html, /<script type="application\/ld\+json">/);
   assert.match(html, /id="stage-canvas"/);
   assert.match(html, /id="rack-grid"/);

@@ -11,6 +11,7 @@ import { ROOT } from './lib/fixtures.mjs';
 
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 const LIVE = process.env.TEST_URL || null;
+const CACHE_BUST = process.env.CACHE_BUST || '';
 const results = [];
 let server = null;
 
@@ -49,7 +50,9 @@ const evaluate = async (expression, userGesture = false) => {
 const waitFor = (expression, timeout = 20000) => cdp.waitFor(expression, { timeout, interval: 120 });
 
 const navigate = async (query = '') => {
-  await cdp.send('Page.navigate', { url: `${base}/${query}` });
+  const target = new URL(`${base}/${query}`);
+  if (CACHE_BUST) target.searchParams.set('bust', CACHE_BUST);
+  await cdp.send('Page.navigate', { url: target.href });
   await waitFor('document.body && document.body.dataset.ready === "true"', 30000);
   await waitFor('document.body.dataset.manifest !== undefined', 15000);
   await sleep(500);
