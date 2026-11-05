@@ -180,7 +180,7 @@ is in [docs/TRACKS.md](docs/TRACKS.md).
 | E | Dreams I | 8 | Original velvet-hour instrumentals |
 | F | Dreams II | 8 | Original snowfall / harbor / glass-garden pieces |
 | G | Bonus | 2 | Amazing Grace, Down by the Salley Gardens |
-| H | Piano | 8 | Fauré, Cappelen, Chopin, Schumann, Debussy, Satie, Beethoven |
+| H | Piano | 8 | Chopin, Schumann, Fauré, Cappelen, Debussy, Satie, Beethoven |
 | I | Nocturnes | 8 | Eight Chopin nocturnes, real piano performances |
 | J | Romantic | 8 | Satie, Debussy, Bruckner, Saint-Saëns, Tchaikovsky, Chopin |
 | K | 78s | 8 | Historical and mechanical recordings, public domain |
@@ -278,7 +278,7 @@ Details: [ACCESSIBILITY](docs/ACCESSIBILITY.md) · [PERFORMANCE](docs/PERFORMANC
 ## Credits
 
 Built in a single **OpenCode** session with **DeepSeek V4.1 Flash**
-(`opencode-go/deepseek-v4.1-flash`): **1h 16m 51s** and **77.4M tokens** (cache reads dominate) at the
+(`opencode-go/deepseek-v4.1-flash`): **1h 19m 36s** and **82.5M tokens** (cache reads dominate) at the
 at the time of the final 1.2.0 capture. Exact counters, file inventory and verification live in
 [state.json](state.json).
 Three.js 0.169.0 (MIT). The fifty synthesized arrangements are public-domain melodies or original
