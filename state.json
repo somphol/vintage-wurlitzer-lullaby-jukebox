@@ -1,6 +1,6 @@
 {
   "project": "Vintage Wurlitzer 3D Lullaby Jukebox & Sleep Studio",
-  "release": "1.1.0",
+  "release": "1.2.0",
   "session": {
     "id": "ses_e56042271ffePs43L8FfL1gi0s",
     "title": "Vintage Wurlitzer Jukebox Project",
@@ -32,10 +32,10 @@
       "script.js"
     ],
     "lineCounts": {
-      "index.html": 386,
-      "style.css": 1645,
-      "script.js": 3635,
-      "total": 5666
+      "index.html": 413,
+      "style.css": 1798,
+      "script.js": 3846,
+      "total": 6057
     },
     "supportingFiles": [
       ".editorconfig",
@@ -94,30 +94,31 @@
       "tests/static.test.mjs"
     ],
     "counts": {
-      "sourceLines": 5666,
+      "sourceLines": 6057,
       "trackedFiles": 55,
       "docs": 15,
       "tests": 5,
-      "archiveTracks": 4,
+      "archiveTracks": 32,
       "synthTracks": 50,
-      "collections": 8,
-      "totalTracks": 54,
-      "rackSlots": 64
+      "collections": 11,
+      "totalTracks": 82,
+      "rackSlots": 88,
+      "mechanicalKeys": 19
     }
   },
   "verification": {
     "method": "Dependency-free Node suites plus one headless Chrome over the Chrome DevTools Protocol, local and live",
     "automatedChecks": 23,
-    "browserChecks": 25,
-    "selfTestChecks": 25,
-    "totalChecks": 73,
+    "browserChecks": 27,
+    "selfTestChecks": 27,
+    "totalChecks": 77,
     "consoleErrors": 0,
-    "liveBrowserChecks": 25,
+    "liveBrowserChecks": 27,
     "checks": [
-      "Engine (11): note maths, sequences, fifty tracks, eight collections, smoothstep fade, clock, 64 slots, manifest, settings/themes, stepping, export payload",
-      "Repository (12): files, HTML shell, import-map pinning, ids, i18n symmetry, engine purity, public-domain manifest, docs links, state fields, no secrets, CSS system",
-      "In-page (25): WebGL, cabinet, 44 bubbles, 30 bulbs, record/tone arm, fifty tracks, 64 slots, dictionaries, 16 keys, manifest, H slots, fade, clock, settings, audio graph, synth start/pause, timer, empty slot, export, language, scene state, theme, text size",
-      "Browser (25): boot, self-test, selection, pause/resume, step, coin credit, empty slot, keypad, seek, Thai, category tabs, search, themes/text size, favourites, knob, ambient, timer, reload, export, help, mobile sheets, reduced motion, public-domain manifest, mute/free-play, zero console errors"
+      "Engine (11): note maths, sequences, fifty synth tracks, eleven collections, smoothstep fade, clock, 88 slots, manifest, settings/themes, stepping, export payload",
+      "Repository (12): files, HTML shell, import-map pinning, ids, i18n symmetry, engine purity, 32 public-domain recordings, docs links, state fields, no secrets, CSS system",
+      "In-page (27): WebGL, cabinet, 44 bubbles, 30 bulbs, record/tone arm, fifty synth tracks, 88 slots, dictionaries, 19 keys, manifest, H–K slots, fade, clock, settings, audio graph, synth start/pause, timer, empty slot, export, language, scene state, theme, text size, first-listen queue, source link",
+      "Browser (27): boot, self-test, first-listen archive queue, source link, selection, pause/resume, step, coin credit, empty slot, keypad, seek, Thai, category tabs, search, themes/text size, favourites, knob, ambient, timer, reload, export, help, mobile sheets, reduced motion, 32 public-domain performances, mute/free-play, zero console errors"
     ],
     "scaffoldSelfTest": "22/22 engine+static and 22/22 browser from a clean skill scaffold"
   },
@@ -129,7 +130,7 @@
     "path": "/",
     "status": "live",
     "verifiedAt": "2026-11-05T05:28:14Z",
-    "note": "Pages serves main / root at 1.1.0. The 25-check browser suite passed against the live URL with zero console errors; the in-page suite is 25/25."
+    "note": "Pages serves main / root at 1.2.0. The 27-check browser suite passes against the live URL with zero console errors; the in-page suite is 27/27."
   },
   "credits": {
     "tool": "OpenCode",
