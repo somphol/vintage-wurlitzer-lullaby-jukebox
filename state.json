@@ -5,10 +5,10 @@
     "id": "ses_e56042271ffePs43L8FfL1gi0s",
     "title": "Vintage Wurlitzer Jukebox Project",
     "startedAt": "2026-11-05T04:33:38Z",
-    "capturedAt": "2026-11-05T05:03:37Z",
-    "elapsedSeconds": 1799,
-    "elapsed": "29m 59s",
-    "note": "One continuous OpenCode session: concept, 3D cabinet, dual audio engines, bilingual UI, four test layers, documentation, GitHub Pages release and the reusable skill. Captured from the OpenCode session database immediately before the final metadata push; only that push and its Pages verification fall outside the counters."
+    "capturedAt": "2026-11-05T05:28:14Z",
+    "elapsedSeconds": 3276,
+    "elapsed": "54m 36s",
+    "note": "One continuous OpenCode session: concept, 50-track 3D jukebox, eight category pages, themes, text sizes, dual audio engines, public-domain archive streams, bilingual UI, four test layers, documentation, GitHub Pages release and the reusable skill. Captured from the OpenCode session database immediately before the final metadata push."
   },
   "model": {
     "name": "DeepSeek V4.1 Flash",
@@ -16,12 +16,12 @@
     "provider": "opencode-go"
   },
   "usage": {
-    "inputTokens": 236003,
-    "outputTokens": 135341,
-    "reasoningTokens": 62105,
-    "cacheReadTokens": 15888256,
+    "inputTokens": 393092,
+    "outputTokens": 193429,
+    "reasoningTokens": 121937,
+    "cacheReadTokens": 49399296,
     "cacheWriteTokens": 1547,
-    "totalTokens": 16323252,
+    "totalTokens": 50109301,
     "costUSD": 0.0,
     "note": "Read from the OpenCode session database (session_v2) for this session. totalTokens sums all five counters; repeated prompt context (cache reads) dominates. costUSD is 0 on the flat-rate plan. Counters exclude the final metadata push only."
   },
@@ -96,7 +96,7 @@
     "counts": {
       "sourceLines": 5666,
       "trackedFiles": 55,
-      "docs": 14,
+      "docs": 15,
       "tests": 5,
       "archiveTracks": 4,
       "synthTracks": 50,
@@ -128,8 +128,8 @@
     "branch": "main",
     "path": "/",
     "status": "live",
-    "verifiedAt": "2026-11-05T05:03:37Z",
-    "note": "Pages created through the API on main / root. The 22-check browser suite passed against the live URL with zero console errors; the in-page suite is 23/23."
+    "verifiedAt": "2026-11-05T05:28:14Z",
+    "note": "Pages serves main / root at 1.1.0. The 25-check browser suite passed against the live URL with zero console errors; the in-page suite is 25/25."
   },
   "credits": {
     "tool": "OpenCode",
@@ -143,11 +143,11 @@
     "name": "wurlitzer-lullaby-studio",
     "title": "Wurlitzer Lullaby Studio",
     "status": "published",
-    "version": "content hash in the catalog index.json",
+    "version": "62372486b0d9",
     "catalog": "https://somphol.github.io/opencode-skills/",
     "source": "https://github.com/somphol/opencode-skills/tree/main/wurlitzer-lullaby-studio",
     "local": "~/.config/opencode/skills/wurlitzer-lullaby-studio",
     "validated": true,
-    "note": "35 files. The reference is updated to the 50-track, category-tab, theme and text-size release; check-skill.mjs passes and a clean scaffold passes the suites."
+    "note": "50 files, 0.89 MB. check-skill.mjs passes; a clean scaffold passed 23/23 engine+repository and 25/25 headless browser checks. Catalog index serves version 62372486b0d9."
   }
 }

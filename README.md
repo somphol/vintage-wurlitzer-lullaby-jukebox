@@ -273,8 +273,9 @@ Details: [ACCESSIBILITY](docs/ACCESSIBILITY.md) · [PERFORMANCE](docs/PERFORMANC
 ## Credits
 
 Built in a single **OpenCode** session with **DeepSeek V4.1 Flash**
-(`opencode-go/deepseek-v4.1-flash`): **29m 59s** and **16.3M tokens** (cache reads dominate) at the
-time of capture. Exact counters, file inventory and verification live in [state.json](state.json).
+(`opencode-go/deepseek-v4.1-flash`): **54m 36s** and **50.1M tokens** (cache reads dominate) at the
+at the time of the 1.1.0 capture. Exact counters, file inventory and verification live in
+[state.json](state.json).
 Three.js 0.169.0 (MIT). The fifty synthesized arrangements are public-domain melodies or original
 compositions; the four archive recordings are public domain and individually credited in
 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). The build-session record, including elapsed time
